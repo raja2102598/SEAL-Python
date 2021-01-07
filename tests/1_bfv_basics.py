@@ -29,7 +29,7 @@ def example_bfv_basics():
     decryptor = Decryptor(context, secret_key)
 
     print("-" * 50)
-    x = "6"
+    x = "3"
     x_plain = Plaintext(x)
     print("Express x = " + x + " as a plaintext polynomial 0x" +
           x_plain.to_string() + ".")

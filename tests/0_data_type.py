@@ -1,8 +1,20 @@
 from seal import *
 from seal_helper import *
 import numpy as np
+from flask import Flask  
+  
+app = Flask(__name__) #creating the Flask class object   
+ 
+@app.route('/test') #decorator drfines the  
+def home():  
+    return "hello, this is our first website"
+
+@app.route('/arun') 
+def arun():
+    return "<h1 class='h1'>First Flask application</h1><h1 class='h1'>First Flask application</h1>"
 
 
+@app.route("/example")
 def example_data_type():
     a = [0.1, 0.3, 1.01, 0.2]
     b = DoubleVector(a)
@@ -11,7 +23,7 @@ def example_data_type():
     print(c)  # [0.1  0.3  1.01 0.2 ]
 
     d = IntVector([0]*10)
-    print(len(d))  # 10
+    print(d)  # 10
     d[4] = 1
     e = np.array(d)
     print(e)  # [0 0 0 0 1 0 0 0 0 0]
@@ -44,7 +56,7 @@ def example_serialize():
     evaluator = Evaluator(context)
     decryptor = Decryptor(context, secret_key)
 
-    print("-" * 50)
+    print("@ " * 50)
     x = "6"
     x_plain = Plaintext(x)
     print("Express x = " + x + " as a plaintext polynomial 0x" +
@@ -67,7 +79,7 @@ def example_serialize():
     print("x_read parms_id: ", end="")
     print(x_read.parms_id())
 
-
-if __name__ == '__main__':
+if __name__ =='__main__':
     example_data_type()
-    example_serialize()
+    example_serialize()  
+    app.run(debug = True)  
